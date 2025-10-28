@@ -261,6 +261,65 @@
 
     </div>
   </section>
+
+
+  <section id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="d-flex flex-wrap align-items-center hero-slide"
+          style="background:linear-gradient(90deg,rgba(0,0,0,0.85) 40%,#000 100%);">
+          <div class="col-md-6 p-0">
+            <img src="./img/7.Boxing.png" class="img-fluid w-100 h-100 object-fit-cover" alt="CrossFit" />
+          </div>
+          <div class="col-md-6 text-light p-5">
+            <h2 class="fw-bold"><span class="text-danger">IRON</span>MASS</h2>
+            <h4 class="mb-4">CROSSFIT STUDIO</h4>
+            <p>
+              Our facility offers an extensive place for your CrossFit and fitness
+              practice. Across our 20,000 sq/ft gym space you’ll surely have more
+              than enough room for maneuvering!
+            </p>
+            <p>
+              Spacious area of that scale is more than enough for both group and
+              individual training.
+            </p>
+            <a href="#" class="btn btn-danger px-4 mt-3">JOIN NOW</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 (example) -->
+      <div class="carousel-item">
+        <div class="d-flex flex-wrap align-items-center hero-slide"
+          style="background:linear-gradient(90deg,rgba(0,0,0,0.85) 40%,#000 100%);">
+          <div class="col-md-6 p-0">
+            <img src="./img/6.Kickboxing.png" class="img-fluid w-100 h-100 object-fit-cover" alt="Training" />
+          </div>
+          <div class="col-md-6 text-light p-5">
+            <h2 class="fw-bold"><span class="text-danger">POWER</span>ZONE</h2>
+            <h4 class="mb-4">STRENGTH CENTER</h4>
+            <p>
+              Build endurance and strength with our advanced workout programs and
+              trainers.
+            </p>
+            <a href="#" class="btn btn-outline-light px-4 mt-3">LEARN MORE</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </section>
+
   <!-- Why Choose Us -->
   <section id="why" class="py-20 bg-[#000000]" data-aos="fade-up">
     <div class="container">
@@ -294,12 +353,352 @@
     </div>
   </section>
 
+  <!-- ================== GYM PHOTOS SECTION ================== -->
+  <!-- ================== GYM PHOTOS SECTION (auto-scroll + lightbox) ================== -->
+  <section id="photos" class="photos-section py-5 overflow-hidden">
+    <div class="text-center mb-5">
+      <h2 class="blog-title">LATEST PHOTOS FROM OUR GYM</h2>
+      <div class="blog-underline mx-auto"></div>
+    </div>
+
+
+    <!-- Scrolling Strip (duplicate images to make loop seamless) -->
+    <div class="scrolling-gallery" aria-hidden="false">
+      <div class="scrolling-track" id="scrollingTrack">
+        <img src="./img/gym1.jpg" alt="Gym 1" onclick="openLightbox(this)" />
+        <img src="./img/gym2.jpg" alt="Gym 2" onclick="openLightbox(this)" />
+        <img src="./img/gym3.jpg" alt="Gym 3" onclick="openLightbox(this)" />
+        <img src="./img/gym1.jpg" alt="Gym 4" onclick="openLightbox(this)" />
+        <!-- duplicate for smooth loop -->
+        <img src="./img/gym2.jpg" alt="Gym 1" onclick="openLightbox(this)" />
+        <img src="./img/gym3.jpg" alt="Gym 2" onclick="openLightbox(this)" />
+        <img src="./img/gym1.jpg" alt="Gym 3" onclick="openLightbox(this)" />
+        <img src="./img/gym2.jpg" alt="Gym 4" onclick="openLightbox(this)" />
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX POPUP (single overlay, closed by clicking overlay or close button or ESC) -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="close-btn" id="lbCloseBtn" aria-label="Close (Esc)">&times;</button>
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="Expanded View" />
+      <div id="lightbox-loader" class="lb-loader" aria-hidden="true">Loading…</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCloseBtn = document.getElementById('lbCloseBtn');
+      const lbLoader = document.getElementById('lightbox-loader');
+      const scrollingTrack = document.getElementById('scrollingTrack');
+
+      // openLightbox called from inline onclick on gallery images
+      window.openLightbox = function (imgEl) {
+        if (!imgEl || !imgEl.src) return;
+        // show loader
+        lbLoader.style.display = 'block';
+        // pause gallery animation while viewing
+        if (scrollingTrack) scrollingTrack.style.animationPlayState = 'paused';
+
+        // set aria state
+        lightbox.setAttribute('aria-hidden', 'false');
+
+        // set open class (display:flex)
+        lightbox.classList.add('open');
+
+        // load image reliably (so loader shows while loading)
+        const src = imgEl.getAttribute('src') || imgEl.src;
+        const tmp = new Image();
+        tmp.onload = function () {
+          lbImg.src = src;
+          lbLoader.style.display = 'none';
+        };
+        tmp.onerror = function () {
+          lbLoader.textContent = 'Failed to load image';
+          setTimeout(() => { lbLoader.style.display = 'none'; }, 1200);
+        };
+        tmp.src = src;
+      };
+
+      // close function
+      window.closeLightbox = function () {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        lbLoader.style.display = 'none';
+        // resume gallery animation
+        if (scrollingTrack) scrollingTrack.style.animationPlayState = 'running';
+      };
+
+      // close when clicking outside the inner wrapper
+      // we only close when user clicks the overlay (not when they click image)
+      lightbox.addEventListener('click', function (e) {
+        // if click target is the overlay itself (lightbox), close
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // prevent clicks on the image from bubbling to the overlay
+      lbImg.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+
+      // close button
+      lbCloseBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      // close on ESC
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+          closeLightbox();
+        }
+      });
+
+      // Optional: pause scrolling on hover over gallery (improves UX)
+      if (scrollingTrack) {
+        const track = scrollingTrack;
+        track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
+        track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+      }
+    })();
+  </script>
+
+
+  <!-- ================== NEWSLETTER / CONNECT SECTION ================== -->
+  <section id="newsletter" class="newsletter-section py-5 text-center">
+    <div class="container">
+      <h2 class="newsletter-title mb-3">GET OUR GYM'S SPECIAL OFFERS</h2>
+      <p class="newsletter-subtitle mb-4">and the Latest CrossFit Tips and Tricks!</p>
+
+      <!-- Newsletter Form -->
+      <form class="newsletter-form d-flex justify-content-center mb-5">
+        <input type="email" class="newsletter-input" placeholder="Enter your e-mail address" required>
+        <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
+      </form>
+
+      <h3 class="newsletter-connect-title mb-4">LET'S STAY CONNECTED</h3>
+
+      <!-- Social Icons -->
+      <div class="newsletter-social d-flex justify-content-center gap-3">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================== CROSSFIT CLASSES BLOCK ================== -->
+  <section id="crossfit-classes" class="crossfit-classes-section py-5">
+    <div class="container">
+
+      <div class="section-head text-center mb-4">
+        <h2 class="blog-title">CROSSFIT CLASSES</h2>
+        <div class="section-underline mx-auto"></div>
+      </div>
+
+      <div class="classes-grid">
+        <!-- LEFT: class hero + description -->
+        <div class="class-main">
+          <div class="class-hero">
+            <img src="./img/trainer1.jpg" alt="Crossfit class" />
+          </div>
+
+          <div class="class-card">
+            <h3 class="class-title">WHAT IS CROSSFIT?</h3>
+            <div class="section-underline mx-auto mb-3"></div>
+
+            <p class="class-text">
+              CrossFit is a universal fitness program and conditioning system. It is used by many police,
+              law-enforcement and military institutions as a functional strength and conditioning
+              protocol. The program develops athletic skill and works on all fitness domains: endurance,
+              stamina, strength, flexibility and coordination.
+            </p>
+
+            <ul class="class-list">
+              <li>Professional athletes, preparing for competitions</li>
+              <li>Law-enforcement officers, preparing for active duty</li>
+              <li>Amateur athletes with mid to long experience in fitness</li>
+            </ul>
+
+            <!-- ✅ Your added row -->
+            <!-- ✅ Your added row -->
+            <div class="row g-0 mt-4 align-items-stretch">
+              <div class="col-md-6">
+                <img src="./img/coach.jpg" class="img-fluid h-100 w-100 object-fit-cover rounded-start"
+                  alt="Crossfit training">
+              </div>
+              <div class="col-md-6 d-flex align-items-center ">
+                <div class=" w-100 text-center pricing-box1">
+                  <h5>PRICING</h5>
+                  <ul>
+                    <li><strong>1 - 5</strong> sessions per month &nbsp; <span>$69.00</span></li>
+                    <li><strong>5 - 15</strong> sessions per month &nbsp; <span>$59.00</span></li>
+                    <li><strong>15 - 30</strong> sessions per month &nbsp; <span>$49.00</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- end row -->
+            <!-- end row -->
+          </div>
+        </div>
+
+        <!-- RIGHT: coach card -->
+        <aside class="coach-side">
+          <div class="coach-card">
+            <div class="coach-imgwrap">
+              <img src="./img/trainer1.jpg" alt="Coach portrait">
+              <div class="coach-border"></div>
+            </div>
+
+            <div class="coach-content">
+              <h4 class="coach-name">CROSSFIT CLASS COACH</h4>
+              <div class="coach-meta">STEVEN AYOKEE — OWNER/HEAD COACH</div>
+
+              <p class="coach-bio">
+                12 Years ago I lost 80lbs and changed my life — now I guide others through
+                personalized CrossFit training to build strength, stamina and confidence.
+              </p>
+
+              <a href="#contacts" class="btn coach-btn">Contact Coach</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- ================== CTA BANNER: JOIN / SIGN UP (next section) ================== -->
+  <section id="cta-banner-2" class="cta-banner-2">
+    <div class="cta-inner container d-flex align-items-center">
+      <div class="cta-left">
+        <h2 class="cta-h1">
+          ARE YOU INTERESTED IN MAKING<br>
+          YOURSELF <span class="cta-highlight">MORE FIT?</span>
+        </h2>
+        <p class="cta-sub">SIGN UP FOR OUR CROSSFIT ACTIVITIES RIGHT NOW!</p>
+        <a href="#cta" class="btn cta-btn">SIGN UP</a>
+      </div>
+
+      <div class="cta-right" aria-hidden="true">
+        <img src="./img/9.Dance.png" alt="Athlete" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== BLOG / FITNESS POSTS SECTION ================== -->
+  <section id="blog" class="blog-section py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="blog-title">MOST RECENT FITNESS POSTS:</h2>
+        <div class="blog-underline mx-auto"></div>
+      </div>
+
+      <div class="row g-0">
+        <!-- Post 1 -->
+        <div class="col-md-4">
+          <div class="blog-card" style="background-image: url('./img/3.Fencing.png');">
+            <div class="overlay"></div>
+            <div class="blog-content">
+              <h3>Restoring Strength and Getting Back to CrossFit After Pregnancy</h3>
+              <p class="meta">Posted by admin &nbsp;&nbsp; February 25, 2024</p>
+              <a href="#" class="btn-read">READ MORE</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="col-md-4">
+          <div class="blog-card" style="background-image: url('./img/2\ Table\ Tennis.png');">
+            <div class="overlay"></div>
+            <div class="blog-content">
+              <h3>If My Last Day of CrossFit Were Tomorrow...</h3>
+              <p class="meta">Posted by admin &nbsp;&nbsp; February 25, 2024</p>
+              <a href="#" class="btn-read">READ MORE</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="col-md-4">
+          <div class="blog-card" style="background-image: url('./img/1.Gymnastics.png');">
+            <div class="overlay"></div>
+            <div class="blog-content">
+              <h3>Weightlifting Program Plan: Be Flexible With the Prescriptions</h3>
+              <p class="meta">Posted by admin &nbsp;&nbsp; February 25, 2024</p>
+              <a href="#" class="btn-read">READ MORE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
   <!-- CTA -->
   <section id="cta" class="cta" data-aos="zoom-in">
     <div class="cta-content text-white">
       <h2>Ready to Transform Your Body?</h2>
       <p>Join BHOIR SPORTS COMPLEX today and unlock the best version of yourself!</p>
       <a href="#hero" class="btn">Join Now</a>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- ================== FINAL FOOTER SECTION ================== -->
+  <section id="bottom-footer" class="bottom-footer">
+    <div class="container footer-container">
+      <!-- About -->
+      <div class="footer-box">
+        <h3 class="footer-logo">BHOIR SHPORTS</h3>
+        <p>
+          Regardless of what is your current shape now, after visiting our CrossFit
+          sessions you will be at the top of your physical conditions!
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="footer-box">
+        <h4 class="footer-title">NAVIGATIONS</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#classes" class="active-link">Classes</a></li>
+          <li><a href="#coaches">Coaches</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#cta">Contacts</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact info -->
+      <div class="footer-box">
+        <h4 class="footer-title">CONTACT INFORMATION</h4>
+        <p>4096 N Highland St, Arlington, VA 32101, USA</p>
+        <a href="mailto:ironmass@demolink.org" class="footer-mail">ironmass@demolink.org</a>
+      </div>
+
+      <!-- Hours -->
+      <div class="footer-box">
+        <h4 class="footer-title">WE ARE OPEN</h4>
+        <p>Mon-Thu: 9:30 – 21:00</p>
+        <p>Fri: 6:00 – 21:00</p>
+        <p>Sat: 10:00 – 15:00</p>
+      </div>
     </div>
   </section>
 
@@ -313,9 +712,12 @@
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
   <script>
     AOS.init({ duration: 1000, once: true, offset: 100 });
   </script>
+
+
 </body>
 
 </html>

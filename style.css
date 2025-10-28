@@ -420,3 +420,1246 @@ footer {
     font-size: 28px;
   }
 }
+
+.hero-slide {
+  min-height: 90vh;
+  overflow: hidden;
+}
+
+.hero-slide img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.hero-slide h2 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+.hero-slide h4 {
+  font-size: 1.5rem;
+  color: #ccc;
+}
+
+.hero-slide p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #e5e5e5;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+@media (max-width: 768px) {
+  .hero-slide {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-slide h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ========== Blog / Recent Posts Section ========== */
+.blog-section {
+  background: #0f0f0f;
+  padding: 80px 0;
+  color: #fff;
+}
+
+.blog-title {
+  font-size: 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.blog-underline {
+  width: 120px;
+  height: 6px;
+  background: #ff671e;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.blog-card {
+  position: relative;
+  height: 480px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.blog-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  transition: all 0.4s ease;
+}
+
+.blog-card:hover .overlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.blog-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+}
+
+.blog-content h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+.blog-content .meta {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.btn-read {
+  background: #ff671e;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px 25px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-read:hover {
+  background: #c62828;
+  transform: translateY(-2px);
+}
+
+
+
+/* Responsive tweaks */
+@media (max-width: 767.98px) {
+  .blog-card {
+    height: 350px;
+  }
+
+  .blog-content h3 {
+    font-size: 18px;
+  }
+}
+
+/* ========== Auto-scrolling Gallery ========== */
+.scrolling-gallery {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0f0f0f;
+  padding: 20px 0;
+}
+
+.scrolling-track {
+  display: flex;
+  width: calc(250px * 8);
+  animation: scrollGallery 30s linear infinite;
+}
+
+.scrolling-track img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  filter: brightness(0.85);
+}
+
+.scrolling-track img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+@keyframes scrollGallery {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scrolling-track img {
+    width: 180px;
+    height: 130px;
+  }
+}
+
+/* ========== Lightbox Popup (improved) ========== */
+.lightbox {
+  display: none;
+  /* hidden by default */
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  /* very high so it sits above everything */
+  background: rgba(0, 0, 0, 0.92);
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  transition: opacity 0.25s ease;
+}
+
+/* when opened we toggle 'open' class via JS */
+.lightbox.open {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* inner wrapper keeps layout centered and prevents accidental overlay clicks */
+.lightbox-inner {
+  position: relative;
+  max-width: 95%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  display: block;
+  will-change: transform, opacity;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* loader while image loads */
+.lb-loader {
+  position: absolute;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  top: 12px;
+  left: 18px;
+  display: none;
+}
+
+/* close button */
+.close-btn {
+  position: fixed;
+  top: 18px;
+  right: 26px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 100000;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: color 0.15s ease;
+}
+
+.close-btn:hover {
+  color: #ff671e;
+}
+
+/* small screens */
+@media (max-width: 768px) {
+  .lightbox {
+    padding: 16px;
+  }
+
+  .close-btn {
+    font-size: 34px;
+    right: 14px;
+    top: 10px;
+  }
+
+  .lb-loader {
+    left: 14px;
+    top: 8px;
+    font-size: 14px;
+  }
+}
+
+/* ========== Newsletter / Connect Section ========== */
+.newsletter-section {
+  background: #1b1c1f;
+  color: #fff;
+  padding: 100px 0;
+}
+
+.newsletter-title {
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.newsletter-subtitle {
+  color: #ccc;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.newsletter-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.newsletter-btn {
+  background: #ff4436;
+  color: #fff;
+  border: none;
+  padding: 0 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+.newsletter-btn:hover {
+  background: #e63829;
+}
+
+.newsletter-connect-title {
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+
+.newsletter-social a {
+  width: 55px;
+  height: 55px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.newsletter-social a:hover {
+  background: #ff671e;
+  border-color: #ff671e;
+  transform: translateY(-4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .newsletter-title {
+    font-size: 22px;
+  }
+
+  .newsletter-input {
+    padding: 12px;
+  }
+
+  .newsletter-btn {
+    padding: 0 20px;
+    font-size: 14px;
+  }
+
+  .newsletter-social a {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+/* ========== Bottom Footer ========== */
+.bottom-footer {
+  background: #2a2b2e;
+  color: #cfcfcf;
+  padding: 80px 0;
+  font-family: "Lato", sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-box p {
+  color: #bdbdbd;
+  line-height: 1.8;
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.footer-logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.footer-title {
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin: 8px 0;
+}
+
+.footer-links a {
+  color: #cfcfcf;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ff671e;
+  transform: translateX(4px);
+}
+
+.active-link {
+  color: #ff3b2f !important;
+  font-weight: 600;
+}
+
+.footer-mail {
+  color: #ff3b2f;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-mail:hover {
+  text-decoration: underline;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .bottom-footer {
+    padding: 50px 20px;
+  }
+
+  .footer-logo {
+    font-size: 22px;
+  }
+
+  .footer-title {
+    font-size: 15px;
+  }
+}
+
+/* ========== CTA BANNER 2 (hero with right image) ========== */
+.cta-banner-2 {
+  background: linear-gradient(90deg, #232427 0%, rgba(35, 36, 39, 0.9) 55%, rgba(35, 36, 39, 0.85) 100%);
+  color: #fff;
+  padding: 56px 0;
+  overflow: hidden;
+  border-top: 6px solid rgba(0, 0, 0, 0.1);
+}
+
+.cta-banner-2 .cta-inner {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* left column: text */
+.cta-left {
+  flex: 1 1 65%;
+  min-width: 320px;
+}
+
+.cta-h1 {
+  font-size: 64px;
+  line-height: 1.02;
+  font-weight: 900;
+  margin: 0 0 14px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* highlighted word */
+.cta-highlight {
+  color: #ff3b2f;
+  /* red accent */
+}
+
+/* subtitle */
+.cta-sub {
+  font-size: 18px;
+  font-weight: 800;
+  color: #e6e6e6;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+
+/* CTA button */
+.cta-btn {
+  display: inline-block;
+  background: #ff3b2f;
+  color: #fff;
+  padding: 16px 30px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: 3px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: transform .18s ease, background .18s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  background: #e6332a;
+}
+
+/* right column: hero image */
+.cta-right {
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 300px;
+  overflow: hidden;
+}
+
+.cta-right img {
+  width: 560px;
+  /* large enough for wide screens */
+  max-width: 100%;
+  /* height: 260px; */
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+  border-radius: 0;
+  filter: saturate(0.98);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.25);
+}
+
+/* Slight darker overlay effect on left part so white text pops */
+.cta-banner-2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 992px) {
+  .cta-h1 {
+    font-size: 48px;
+  }
+
+  .cta-right img {
+    height: 300px;
+    width: auto;
+  }
+
+  .cta-inner {
+    padding: 26px 16px;
+  }
+}
+
+@media (max-width: 680px) {
+  .cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .cta-left {
+    width: 100%;
+  }
+
+  .cta-right {
+    width: 100%;
+    order: 2;
+  }
+
+  .cta-right img {
+    width: 100%;
+    height: 280px;
+    object-position: center;
+  }
+
+  .cta-h1 {
+    font-size: 34px;
+    line-height: 1.05;
+  }
+
+  .cta-sub {
+    font-size: 15px;
+  }
+
+  .cta-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* pricing box (for image + pricing row) */
+.pricing-box {
+  background: linear-gradient(180deg, #ff4b3f, #ff2f28);
+  color: #fff;
+  padding: 25px;
+  border-radius: 0 6px 6px 0;
+  box-shadow: 0 8px 25px rgba(255, 60, 47, 0.2);
+  height: 100%;
+}
+
+.pricing-box h5 {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.pricing-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+.pricing-box li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+}
+
+.pricing-box li:last-child {
+  border-bottom: none;
+}
+
+.pricing-box span {
+  font-weight: 800;
+}
+
+/* image next to pricing */
+.object-fit-cover {
+  object-fit: cover;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .pricing-box {
+    border-radius: 0 0 6px 6px;
+    text-align: center;
+  }
+
+  .object-fit-cover {
+    height: 240px;
+  }
+}
+
+/* ========== CROSSFIT 2x2 LAYOUT ========== */
+.classes-2col-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Left and right container wrappers */
+.col-left,
+.col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Each left row (image + content) uses two-column layout */
+.left-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  background: rgba(22, 23, 25, 0.9);
+  padding: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+}
+
+/* Slight variant spacing for left-row-1 (info heavier) */
+.left-row-1 {
+  grid-template-columns: 45% 55%;
+}
+
+.left-row .lr-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Info block on left-row-1 */
+.lr-info .class-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.lr-info .card-divider {
+  width: 64px;
+  height: 4px;
+  background: #ff671e;
+  margin-bottom: 12px;
+  border-radius: 3px;
+}
+
+.lr-info .class-text {
+  color: #cfcfcf;
+  line-height: 1.7;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.lr-info .class-list {
+  margin-left: 16px;
+  color: #cfcfcf;
+}
+
+/* left-row-2: image + pricing */
+.left-row-2 {
+  grid-template-columns: 45% 55%;
+  align-items: center;
+}
+
+/* pricing block style for second row */
+.lr-pricing .pricing-box {
+  background: linear-gradient(180deg, #ff4b3f, #ff2f28);
+  color: #fff;
+  padding: 18px;
+  border-radius: 6px;
+  box-shadow: 0 12px 30px rgba(255, 60, 47, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  height: 100%;
+}
+
+.pricing-box h5 {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 0;
+}
+
+.pricing-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.pricing-box li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.pricing-box li:last-child {
+  border-bottom: none;
+}
+
+.pricing-cta {
+  display: inline-block;
+  margin-top: 8px;
+  background: #111;
+  color: #fff;
+  padding: 8px 14px;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* RIGHT column rows */
+/* row 1 coach image */
+.right-row-1 .coach-image-wrap {
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+}
+
+.right-row-1 .coach-image-wrap img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+/* row 2 coach info */
+.coach-card-compact {
+  background: rgba(26, 27, 29, 0.95);
+  padding: 18px;
+  border-radius: 6px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+}
+
+.coach-name {
+  font-size: 15px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+.coach-meta {
+  color: #ff6b55;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.coach-bio {
+  color: #cfcfcf;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.coach-btn {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #ff671e;
+  padding: 9px 14px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.coach-btn:hover {
+  background: #ff671e;
+  color: #111;
+}
+
+/* Small screens: stack everything as single column */
+@media (max-width: 992px) {
+  .classes-2col-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .right-row-1 .coach-image-wrap img {
+    height: 260px;
+  }
+
+  .left-row,
+  .left-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .lr-pricing .pricing-box {
+    border-radius: 6px;
+  }
+
+  .left-row .lr-img img {
+    height: 220px;
+  }
+}
+
+/* ========== CROSSFIT CLASSES SECTION ========== */
+.crossfit-classes-section {
+  background: transparent;
+  padding: 60px 0 40px;
+  color: #e6e6e6;
+}
+
+.section-head .small-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #f5f5f5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.section-underline {
+  width: 90px;
+  height: 4px;
+  background: #ff671e;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+/* grid */
+.classes-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+  align-items: start;
+  margin-top: 18px;
+}
+
+/* LEFT column */
+.class-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* hero image on top */
+.class-hero {
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+}
+
+.class-hero img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+
+.class-hero img:hover {
+  transform: scale(1.03);
+}
+
+/* description card */
+.class-card {
+  background: rgba(26, 27, 29, 0.95);
+  padding: 22px;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+.class-title {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+  color: #fff;
+}
+
+.card-divider {
+  width: 64px;
+  height: 3px;
+  background: #ff671e;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+
+.class-text {
+  color: #cfcfcf;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.class-list {
+  margin: 12px 0 18px 18px;
+  color: #cfcfcf;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.class-list li {
+  margin-bottom: 8px;
+}
+
+/* pricing box (floats inside left column) */
+.pricing-box {
+  position: absolute;
+  right: 18px;
+  bottom: -36px;
+  width: 320px;
+  background: linear-gradient(180deg, #ff4b3f, #ff2f28);
+  color: #fff;
+  padding: 18px;
+  border-radius: 6px;
+  box-shadow: 0 14px 40px rgba(255, 60, 47, 0.12);
+  transform: translateY(0);
+  z-index: 8;
+}
+
+.pricing-box h5 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.pricing-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.pricing-box li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.pricing-box li:last-child {
+  border-bottom: none;
+}
+
+.pricing-box li span {
+  font-weight: 800;
+}
+
+/* RIGHT column: coach card */
+.coach-side {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.coach-card {
+  width: 100%;
+  background: rgba(26, 27, 29, 0.96);
+  padding: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.coach-imgwrap {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.coach-imgwrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* decorative thin line between img and content */
+.coach-border {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 103, 30, 0.95) 50%, transparent 100%);
+}
+
+/* content */
+.coach-content {
+  padding: 18px;
+  color: #ddd;
+}
+
+.coach-name {
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 6px 0;
+  color: #fff;
+}
+
+.coach-meta {
+  color: #ff6b55;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.coach-bio {
+  color: #cfcfcf;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.coach-btn {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #ff671e;
+  padding: 10px 16px;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all .18s ease;
+}
+
+.coach-btn:hover {
+  background: #ff671e;
+  color: #111;
+}
+
+/* small screen adjustments */
+@media (max-width: 1024px) {
+  .classes-grid {
+    grid-template-columns: 1fr 340px;
+  }
+
+  .pricing-box {
+    right: 14px;
+    width: 300px;
+    bottom: -28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .classes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-box {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    margin-top: 14px;
+    transform: none;
+  }
+
+  .class-hero img {
+    height: 240px;
+  }
+
+  .coach-imgwrap {
+    height: 220px;
+  }
+}
+
+/* ========== Crossfit Classes Enhancements ========== */
+/* ========== Crossfit Classes Enhancements ========== */
+.class-card {
+  background: rgba(26, 27, 29, 0.95);
+  padding: 24px;
+  border-radius: 6px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.pricing-box1 {
+  background: linear-gradient(180deg, #ff4b3f, #ff2f28);
+  color: #fff;
+  padding: 22px 24px;
+  border-radius: 0 6px 6px 0;
+  box-shadow: 0 10px 25px rgba(255, 60, 47, 0.2);
+  height: 100%;
+}
+
+.pricing-box1 h5 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.pricing-box1 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+.pricing-box1 li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.pricing-box1 li:last-child {
+  border-bottom: none;
+}
+
+.pricing-box1 span {
+  font-weight: 800;
+}
+
+/* Image hover overlay */
+.class-card .row img {
+  position: relative;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.9);
+}
+
+.class-card .row img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .pricing-box1 {
+    border-radius: 0 0 6px 6px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .class-card .row img {
+    height: 240px;
+    object-fit: cover;
+  }
+}
