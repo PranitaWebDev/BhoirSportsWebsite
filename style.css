@@ -9,35 +9,111 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== HEADER STYLING ===== */
 .top-bar {
-  background: #1e1e1e;
+  background: #000;
   font-size: 14px;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 
-.navbar {
+.text-accent {
+  color: #ff671e;
+}
+
+.top-bar .social-icons a {
+  color: #fff;
+  margin-left: 12px;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.top-bar .social-icons a:hover {
+  color: #ff671e;
+}
+
+/* MAIN NAVBAR */
+.main-navbar {
   background: #ff671e;
-  padding: 10px 0;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  z-index: 2000;
 }
 
 .navbar-brand {
   color: #fff;
-  font-weight: 800;
-  font-size: 24px;
-  letter-spacing: 1px;
-}
-
-.navbar-nav .nav-link {
-  color: #fff !important;
-  font-weight: 600;
+  font-weight: 900;
+  font-size: 22px;
   text-transform: uppercase;
-  margin: 0 10px;
-  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
 }
 
-.navbar-nav .nav-link:hover {
-  color: #ffe082 !important;
+.navbar-brand span {
+  color: #000;
+  font-weight: 800;
 }
+
+.navbar-logo {
+  height: 42px;
+  width: auto;
+  /* filter: brightness(0) invert(1); */
+}
+
+
+
+/* JOIN NOW button */
+.btn-join {
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-join:hover {
+  background: #fff;
+  color: #ff671e;
+  transform: translateY(-2px);
+}
+
+/* Sticky shadow */
+.main-navbar.sticky-top {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    background: ;
+    padding: 15px;
+  }
+
+  .btn-join {
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+  }
+}
+
+.navbar-nav {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+
+
+
+
+
 
 .hero {
   background: url("./img/home.jpg") center center/cover no-repeat;
@@ -58,7 +134,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 10;
-  max-width: 800px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -74,7 +150,7 @@ body {
 }
 
 .hero p {
-  font-size: 16px;
+  font-size: 20px;
   margin: 20px 0 30px;
   color: #ddd;
 }
@@ -142,7 +218,7 @@ body {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  padding-top: 20%;
+  padding-top: 22%;
 }
 
 .program-card:hover {
@@ -152,7 +228,7 @@ body {
 
 .program-card img {
   width: 100%;
-  height: 500px;
+  height: 400px;
   object-fit: cover;
   opacity: 0.9;
   transition: opacity 0.3s ease;
@@ -164,7 +240,7 @@ body {
 
 .program-content {
   position: absolute;
-  top: 0%;
+  top: 2%;
   width: 100%;
 }
 
@@ -341,6 +417,20 @@ footer {
   position: relative;
   overflow: hidden;
   display: inline-block;
+
+}
+
+.coach-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(49, 52, 60, 0.4);
+  transition: background-color 0.8s ease;
+
+}
+
+.coach-img-wrap:hover::after {
+  background-color: rgba(49, 52, 60, 0);
 }
 
 .coach-img {
@@ -430,7 +520,8 @@ footer {
 }
 
 .hero-slide {
-  min-height: 90vh;
+  min-height: 40vh;
+  /* old value: 90vh */
   overflow: hidden;
 }
 
@@ -1255,17 +1346,6 @@ footer {
   display: block;
 }
 
-.coach-img-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(49, 52, 60, 0);
-  transition: background-color 0.8s ease;
-}
-
-.coach-img-wrap:hover::after {
-  background-color: rgba(49, 52, 60, 0.4);
-}
 
 /* row 2 coach info */
 .coach-card-compact {
@@ -2465,4 +2545,28 @@ footer {
   .posts-underline {
     width: 90px;
   }
+}
+
+.title-h2 {
+  font-family: "Montserrat", Sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-style: normal !important;
+  line-height: 36px !important;
+  letter-spacing: 1px !important;
+}
+
+.color-green {
+  color: #25d366;
+}
+
+.title-h1 {
+  font-family: "Montserrat", Sans-serif !important;
+  font-size: 100px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-style: normal !important;
+  line-height: 100px !important;
+  letter-spacing: 3px !important;
 }
