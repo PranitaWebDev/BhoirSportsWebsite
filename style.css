@@ -140,13 +140,32 @@ body {
 }
 
 .hero h1 {
-  font-size: 58px;
-  font-weight: 900;
-  line-height: 1.2;
+  /* font-size: 58px; */
+  /* font-weight: 900; */
+  /* line-height: 1.2; */
+  /* border: 1px solid yellow; */
+  font-family: "Montserrat", Sans-serif;
+  font-size: 100px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: normal;
+  line-height: 100px;
+  letter-spacing: 3px;
+
 }
 
 .hero h1 span {
   color: #ff671f;
+}
+
+.hero h2 {
+  font-family: "Montserrat", Sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-style: normal !important;
+  line-height: 36px !important;
+  letter-spacing: 1px !important;
 }
 
 .hero p {
@@ -228,7 +247,7 @@ body {
 
 .program-card img {
   width: 100%;
-  height: 400px;
+  height: 550px;
   object-fit: cover;
   opacity: 0.9;
   transition: opacity 0.3s ease;
@@ -2547,26 +2566,53 @@ footer {
   }
 }
 
-.title-h2 {
-  font-family: "Montserrat", Sans-serif !important;
-  font-size: 36px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  font-style: normal !important;
-  line-height: 36px !important;
-  letter-spacing: 1px !important;
-}
+.title-h2 {}
 
 .color-green {
   color: #25d366;
 }
 
-.title-h1 {
-  font-family: "Montserrat", Sans-serif !important;
-  font-size: 100px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  font-style: normal !important;
-  line-height: 100px !important;
-  letter-spacing: 3px !important;
+/* ====================================== */
+@media(max-width: 767.98px) {
+  .hero h1 {
+    font-family: "Montserrat", Sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-style: normal;
+    line-height: 50px;
+    letter-spacing: 3px;
+
+  }
+
+  .hero h2 {
+    font-family: "Montserrat", Sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-style: normal !important;
+    line-height: 18px !important;
+    letter-spacing: 1px !important;
+  }
 }
+
+/* ****youtube live link css s */
+#liveShow h2 {
+  letter-spacing: 1px;
+}
+
+#liveShow .ratio {
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+}
+
+#liveShow .btn {
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+#liveShow .btn:hover {
+  transform: scale(1.05);
+}
+
+
+/* ****youtube live link css e */
