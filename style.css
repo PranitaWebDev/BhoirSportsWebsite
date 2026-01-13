@@ -387,7 +387,7 @@ footer {
 }
 
 /* Floating WhatsApp */
-.whatsapp-btn {
+/* .whatsapp-btn {
   position: fixed;
   bottom: 25px;
   right: 25px;
@@ -404,7 +404,7 @@ footer {
   cursor: pointer;
   z-index: 999;
   animation: pulse 2s infinite;
-}
+} */
 
 @keyframes pulse {
   0% {
@@ -2779,3 +2779,502 @@ footer {
   border-color: #FFFFFF !important;
 
 }
+
+
+/* Container placed bottom-left */
+.fab-container {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+
+/* Main FAB button */
+.fab {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  background: #111827;
+  color: #fff;
+  font-size: 14px;
+}
+
+.fab1 {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  background: #111827;
+  color: #fff;
+  font-size: 20px;
+}
+
+.main-fab {
+  /* background: linear-gradient(326deg, #25D366 50%, #F5D90A 50%) */
+  background: rgb(255 255 255 / 39%);
+  border: 3px solid #f8f9fa;
+}
+
+/* Hover effect for main button */
+.main-fab:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+/* Options hidden by default */
+.fab-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 6px;
+  align-items: flex-start;
+  transform-origin: left bottom;
+  transition: transform .18s ease, opacity .18s ease;
+  opacity: 0;
+  transform: translateY(8px) scale(.96);
+  pointer-events: none;
+}
+
+/* Show options when expanded */
+.fab-container.open .fab-options {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Each option button */
+.fab.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  transform-origin: left center;
+  transition: transform .15s ease;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 15px;
+}
+
+/* Hover effect on options */
+.fab.option:hover {
+  transform: translateX(4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.30);
+}
+
+/* Label next to icon */
+.fab-label {
+  white-space: nowrap;
+  margin-left: 2px;
+  display: inline-block;
+}
+
+/* WhatsApp icon-only button */
+.fab.option.whatsapp {
+  background: #25D366;
+  color: white;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  justify-content: center;
+  font-size: 22px;
+}
+
+/* Arattai blue theme */
+.fab.option.arattai {
+  background: #ffd700;
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  padding: 8px !important;
+}
+
+/* Mobile responsive */
+@media (max-width:420px) {
+  .fab-label {
+    display: none;
+  }
+
+  .fab.option.arattai {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+}
+
+/* Focus state */
+.fab:focus,
+.fab.option:focus {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18), 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Affiliated (animated tweaks + responsive) */
+/* AFFILIATED: final (matches screenshot) */
+.affiliated-section {
+  background: #2a333a;
+  /* screenshot-like panel (slightly lighter than page bg) */
+  padding: 64px 0;
+}
+
+/* Heading — use theme fonts + centered spacing */
+.affiliated-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  /* adjust to match screenshot */
+  color: #ffffff;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+/* orange underline like theme */
+.affiliated-underline {
+  width: 220px;
+  /* wider like screenshot */
+  height: 6px;
+  background: #ff671e;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+/* Logo row container */
+.affiliated-logos {
+  gap: 48px;
+  /* spread spacing between logos */
+  margin-top: 42px;
+}
+
+/* each logo column wrapper */
+.aff-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* circular white badge for logos */
+.aff-logo-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform .28s cubic-bezier(.2, .9, .3, 1), box-shadow .28s ease;
+}
+
+/* img inside circle */
+.aff-logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+}
+
+/* hover lift */
+.aff-logo-circle:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* mobile smaller circles */
+.aff-logo-circle.sm {
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+}
+
+/* responsive tweaks */
+@media (max-width: 991.98px) {
+  .affiliated-title {
+    font-size: 36px;
+  }
+
+  .aff-logo-circle {
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+  }
+
+  .affiliated-logos {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .affiliated-section {
+    padding: 36px 0;
+  }
+
+  .affiliated-title {
+    font-size: 28px;
+  }
+}
+
+
+/* =================== FAQ s ================= */
+/* ---------------- Fancy FAQ UI ---------------- */
+.faq-section {
+  background: #111;
+  color: #e9eef2;
+  padding-bottom: 48px;
+}
+
+.faq-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.faq-underline {
+  width: 120px;
+  height: 6px;
+  background: #ff671e;
+  border-radius: 3px;
+  margin-top: 12px;
+}
+
+/* Search */
+.faq-search-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.faq-search {
+  width: 100%;
+  padding: 12px 48px 12px 16px;
+  border-radius: 10px;
+  background: #0f1315;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: #dfe6eb;
+  font-size: 15px;
+  outline: none;
+}
+
+.faq-search::placeholder {
+  color: rgba(223, 230, 235, 0.45);
+}
+
+.faq-search:focus {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 103, 30, 0.12);
+}
+
+.faq-search-clear {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  background: transparent;
+  border: none;
+  color: #cfcfcf;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-search-clear:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+}
+
+/* FAQ item card */
+.faq-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px;
+  position: relative;
+}
+
+.faq-item {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.06));
+  margin-bottom: 14px;
+  border-radius: 12px;
+  padding-left: 64px;
+  /* space for badge */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  transition: transform .22s ease, background .22s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+}
+
+/* left number badge */
+.faq-left-badge {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: #0f1416;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffbfa0;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: inset 0 -4px 10px rgba(255, 103, 30, 0.03), 0 6px 20px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* question row */
+.faq-q {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: #f6f9fa;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* arrow orange box (right) */
+.faq-arrow-box {
+  background: linear-gradient(180deg, #ff6720, #ff7b3b);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .28s cubic-bezier(.2, .9, .3, 1), background .2s;
+  box-shadow: 0 8px 20px rgba(255, 103, 30, 0.12);
+}
+
+.faq-arrow-box i {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* answer */
+.faq-a {
+  padding: 0 20px;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .36s ease, opacity .36s ease, padding .2s ease;
+}
+
+.faq-item.open .faq-a {
+  max-height: 420px;
+  padding: 14px 20px 20px;
+  opacity: 1;
+}
+
+.faq-a p {
+  margin: 0;
+  color: #cfe6ea;
+  line-height: 1.6;
+}
+
+/* rotate arrow and tint when open */
+.faq-item.open .faq-arrow-box {
+  transform: rotate(180deg);
+  background: linear-gradient(180deg, #ff9b6b, #ffb892);
+}
+
+/* extras hidden initially */
+.faq-item.extra {
+  display: none;
+}
+
+/* more button style */
+#faqMoreBtn {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+#faqMoreBtn[aria-expanded="true"] {
+  background: #ff671e;
+  border-color: #ff671e;
+  color: #111;
+}
+
+/* reveal animation helper */
+.faq-item.reveal {
+  animation: fadeInUp .4s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .faq-item {
+    padding-left: 56px;
+  }
+
+  .faq-left-badge {
+    left: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .faq-q {
+    font-size: 16px;
+  }
+
+  .faq-search-wrap {
+    padding: 0 12px;
+  }
+}
+
+/* =================== FAQ e ================= */
+/* ========== Page Loader Styles ========== */
+
+/* ========== Page Loader Styles e========== */
