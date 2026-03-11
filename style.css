@@ -9,6 +9,9 @@ body {
   overflow-x: hidden;
 }
 
+.text-danger {
+  color: #ff671e !important;
+}
 
 /* **********demo  css *********** */
 
@@ -42,6 +45,11 @@ body {
   color: #ff671e;
 }
 
+.top-bar .social-icons {
+  display: flex;
+  align-items: center;
+}
+
 .top-bar .social-icons a {
   color: #fff;
   margin-left: 12px;
@@ -51,6 +59,31 @@ body {
 
 .top-bar .social-icons a:hover {
   color: #ff671e;
+}
+
+/* Arattai Logo Fix */
+.top-bar .social-icons img {
+  height: 16px;
+  width: auto;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  background: #111827;
+}
+
+.arattai-icon {
+  width: 3vw;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  background: #111827;
+  border-radius: 50%;
+  height: 6vh;
+  /* vertical-align: sub; */
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* MAIN NAVBAR */
@@ -144,13 +177,16 @@ body {
   align-items: center;
   text-align: center;
   position: relative;
+  /* filter: brightness(80%); */
 }
+
+
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(73, 72, 72, 0.5);
 }
 
 .hero-content {
@@ -187,7 +223,7 @@ body {
   text-transform: uppercase !important;
   font-style: normal !important;
   line-height: 36px !important;
-  letter-spacing: 1px !important;
+
 }
 
 .hero p {
@@ -2598,8 +2634,12 @@ footer {
     text-transform: uppercase !important;
     font-style: normal !important;
     line-height: 18px !important;
-    letter-spacing: 1px !important;
+
   }
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em !important;
 }
 
 /* ****youtube live link css s */
@@ -3261,7 +3301,6 @@ footer {
 
 /* ========== Page Loader Styles e========== */
 /* ================= FLOATING CHAT (RESPONSIVE & NEAT) ================= */
-
 .floating-chat {
   position: fixed;
   bottom: 20px;
@@ -3274,9 +3313,10 @@ footer {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .2);
+  background: #f8f9fa66;
+  /* Updated: Changed to a solid color so it's visible */
   border: none;
-  color: #fff;
+  color: #ff671e;
   font-size: 24px;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
@@ -3293,7 +3333,6 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 12px;
-
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -3314,11 +3353,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #fff;
   font-size: 22px;
   text-decoration: none;
-
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
   position: relative;
 }
@@ -3328,10 +3365,8 @@ footer {
   background: #25D366;
 }
 
-.float-btn.call {
-  background: #fcd527;
-}
-
+/* Arattai */
+.float-btn.call,
 .float-btn.arattai {
   background: #fcd527;
 }
@@ -3359,7 +3394,8 @@ footer {
 }
 
 /* WHATSAPP PULSE */
-.pulse {
+.pulse,
+.pulse-arattai {
   animation: pulse 1.8s infinite;
 }
 
@@ -3374,6 +3410,20 @@ footer {
 
   100% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes pulse-arattai {
+  0% {
+    box-shadow: 0 0 0 0 #fcd527;
+  }
+
+  70% {
+    box-shadow: 0 0 0 14px rgba(241, 241, 32, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(222, 232, 38, 0);
   }
 }
 
@@ -3393,6 +3443,349 @@ footer {
 
   .float-btn::after {
     display: none;
-    /* tooltip hide on mobile */
+  }
+}
+
+/* ================= FLOATING CHAT (RESPONSIVE & NEAT) ================ */
+/* Google Translate styling */
+#google_translate_element {
+  font-size: 50px;
+  float: right;
+  position: sticky;
+  /* right: 1%;
+  top: 5%; */
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+.goog-te-gadget span {
+  display: none;
+}
+
+.goog-te-combo {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 24px;
+  background: #fff;
+}
+
+/* review part css s */
+.review-card {
+  background: #1f2225;
+  padding: 25px;
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.review-card h5 {
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.review-card .stars {
+  color: #ffb400;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.review-card p {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* review part css e */
+/* affiliated row s */
+/* ================= AFFILIATED TO ================= */
+
+.affiliated-section {
+  background: #1f2225;
+  /* same as coaches section */
+  padding: 80px 0;
+}
+
+.affiliated-title {
+  font-size: 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* logo row */
+.affiliated-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* each logo circle */
+.aff-logo {
+  width: 130px;
+  height: 130px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease;
+}
+
+.aff-logo:hover {
+  transform: translateY(-6px) scale(1.05);
+}
+
+.aff-logo img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* mobile adjustments */
+@media (max-width: 768px) {
+  .affiliated-title {
+    font-size: 28px;
+  }
+
+  .aff-logo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* affiliated row e */
+/* hours section s  */
+/* ================= HOURS SECTION ================= */
+/* ================= HOURS (BHOIR THEME) ================= */
+
+.hours-section-theme {
+  background: linear-gradient(90deg, #232427 0%, rgba(35, 36, 39, 0.9) 55%, rgba(35, 36, 39, 0.85) 100%);
+  /* same as coaches */
+  padding: 100px 20px;
+}
+
+.hours-card-theme {
+  max-width: 520px;
+  margin: 0 auto;
+  background: rgba(26, 27, 29, 0.95);
+  padding: 40px 35px;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55);
+}
+
+/* Title */
+.hours-title-theme {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* Today row */
+.today-row-theme {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.today-row-theme strong {
+  color: #ff671e;
+  /* accent */
+}
+
+.today-row-theme i {
+  transition: transform 0.3s ease;
+  color: #ff671e;
+}
+
+/* Week list */
+.week-hours-theme {
+  margin-top: 25px;
+  display: none;
+  text-align: left;
+}
+
+.week-hours-theme div {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  font-size: 16px;
+  color: #e0e0e0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.week-hours-theme span {
+  font-weight: 600;
+}
+
+/* Active day */
+.week-hours-theme .active-day {
+  color: #ff671e;
+  font-weight: 800;
+}
+
+/* Open state */
+.hours-card-theme.open .week-hours-theme {
+  display: block;
+}
+
+.hours-card-theme.open .today-row-theme i {
+  transform: rotate(180deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hours-card-theme {
+    padding: 30px 22px;
+  }
+
+  .hours-title-theme {
+    font-size: 22px;
+  }
+
+  .today-row-theme {
+    font-size: 15px;
+  }
+}
+
+
+/* hours section e   */
+/* ================= MAP & ADDRESS ================= */
+
+.map-address-section {
+  background: #1f2225;
+  padding: 100px 0;
+}
+
+/* Address card */
+.address-card {
+  background: #1a1b1d;
+  padding: 35px;
+  height: 100%;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55);
+  color: #e0e0e0;
+}
+
+.address-card h4 {
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.address-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.address-card i {
+  color: #ff671e;
+  margin-right: 10px;
+}
+
+/* Map */
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(20%);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .map-address-section {
+    padding: 70px 0;
+  }
+
+  .address-card {
+    padding: 25px;
+  }
+}
+
+/* ================= ABOUT US THEME ================= */
+
+.about-theme {
+  background: #1f2225;
+  padding: 100px 0;
+}
+
+.about-card {
+  background: #1a1b1d;
+  padding: 35px 28px 40px;
+  height: 100%;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55);
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Circular image */
+.about-img {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #ff671e;
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Title */
+.about-card h4 {
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* Text */
+.about-card p {
+  color: #d0d0d0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-theme {
+    padding: 70px 0;
+  }
+
+  .about-img {
+    width: 180px;
+    height: 180px;
   }
 }
