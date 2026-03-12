@@ -1859,6 +1859,10 @@ footer {
   /* keep hard edges like screenshot */
 }
 
+.faculty-programs .program-card img {
+  object-fit: contain;
+}
+
 /* image column */
 .img-col {
   min-height: 480px;
@@ -3763,6 +3767,112 @@ footer {
   object-fit: cover;
 }
 
+.about-imgset {
+  width: 100%;
+  height: 50vh;
+  margin: 0 auto 25px;
+  overflow: hidden;
+
+}
+
+.about-imgset img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-us-txt {
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.vision-mission-section {
+  background: #1f2225;
+  padding: 100px 0;
+}
+
+.vm-card {
+  background: #1a1b1d;
+  padding: 40px 30px;
+  border-radius: 10px;
+  transition: 0.3s;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.vm-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(255, 103, 30, 0.3);
+}
+
+.vm-icon {
+  font-size: 40px;
+  color: #ff671e;
+  margin-bottom: 20px;
+}
+
+.vm-card h3 {
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.vm-card p {
+  color: #ccc;
+  line-height: 1.7;
+}
+
+.vm-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.vm-card ul li {
+  margin-bottom: 8px;
+  color: #ddd;
+}
+
+.stats-section {
+  background: url("./img/gym-bg.jpg") center/cover no-repeat;
+  position: relative;
+  padding: 100px 0;
+}
+
+.stats-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.stat-box {
+  position: relative;
+  color: #fff;
+  z-index: 2;
+}
+
+.stat-box i {
+  font-size: 40px;
+  color: #ff671e;
+  margin-bottom: 15px;
+}
+
+.stat-box h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+.stat-box p {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #ccc;
+}
+
 /* Title */
 .about-card h4 {
   color: #ffffff;
@@ -3788,4 +3898,24 @@ footer {
     width: 180px;
     height: 180px;
   }
+}
+
+
+.filter-btn {
+  background: #111;
+  color: #fff;
+  border: 2px solid #ff671e;
+  padding: 8px 18px;
+  margin: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background: #ff671e;
+}
+
+.filter-btn.active {
+  background: #ff671e;
 }
