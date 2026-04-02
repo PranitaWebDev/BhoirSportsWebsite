@@ -826,7 +826,7 @@ FENCING start -->
                             <div class="col-md-6 d-flex align-items-center ">
                                 <div class=" w-100 text-center pricing-box1">
                                     <h5>PRICING</h5>
-                                    (Insert your actual pricing later.)
+
                                     <ul>
                                         <li><strong>8</strong> Sessions Per Month &nbsp; <span>₹ 00.00</span></li>
                                         <li><strong> 16</strong> Sessions Per Month &nbsp; <span>₹ 00.00</span></li>
@@ -1661,7 +1661,7 @@ MIXED MARTIAL ARTS (MMA) end -->
 
     <!-- PROGRAM 06
 KICKBOXING start -->
-    <section id="crossfit-classes" class="crossfit-classes-section py-5 program-block mt-lg-5"
+    <section id="kickboxing-classes" class="kickboxing-classes-section py-5 program-block mt-lg-5"
         data-program="Kickboxing">
         <div class="container mt-lg-5">
 
@@ -3108,7 +3108,7 @@ YOGA start -->
                             <div class="col-md-6 d-flex align-items-center ">
                                 <div class=" w-100 text-center pricing-box1">
                                     <h5>PRICING</h5>
-                                    (Insert your actual pricing later.)
+
                                     <ul>
                                         <li><strong>8</strong> Sessions Per Month &nbsp; <span>₹ 00.00</span></li>
                                         <li><strong> 12</strong> Sessions Per Month &nbsp; <span>₹ 00.00</span></li>
@@ -4377,8 +4377,13 @@ Casual  end -->
     <section id="cta" class="cta" data-aos="zoom-in">
         <div class="cta-content text-white">
             <h2>Ready to Transform Your Body?</h2>
-            <p>Join BHOIR SPORTS COMPLEX today and unlock the best version of yourself!</p>
-            <a href="#hero" class="btn">Join Now</a>
+            <p class="mb-4">Join BHOIR SPORTS COMPLEX today and unlock the best version of yourself!</p>
+            <a href="https://aratt.ai/user/@bsc888" class="btn btn-success"
+                style="background-color: #25D366 !important; color: white !important;">Chat on WhatsApp</a>
+            <a href="https://wa.me/918976892277" class="btn btn-warning"
+                style="background-color: #fcd527 !important; color: black !important; color: black !important;">Connect
+                on
+                Arattai</a>
         </div>
     </section>
 
@@ -4421,9 +4426,10 @@ Casual  end -->
             <!-- Hours -->
             <div class="footer-box">
                 <h4 class="footer-title">WE ARE OPEN</h4>
-                <p>Mon-Thu: 9:30 – 21:00</p>
-                <p>Fri: 6:00 – 21:00</p>
-                <p>Sat: 10:00 – 15:00</p>
+                <p>Mon-Sat: 9:00 am – 8
+                    :00 pm</p>
+                <!-- <p>Sat: 9:00 am – 5:00 pm</p> -->
+                <p>Sun: 10:00 am – 5:00 pm</p>
             </div>
         </div>
     </section>
@@ -4467,300 +4473,70 @@ Casual  end -->
     <!-- FAQ script s -->
     <script>
         (function () {
-            const VISIBLE_INITIAL = 5;   // first visible
-            const BATCH = 10;            // reveal per click
+            // सर्व FAQ आयटम्स निवडा (कोणत्याही स्पोर्ट्सचे असोत)
+            const faqItems = document.querySelectorAll('.faq-item');
 
-            const faqListGym = document.getElementById('faqListGym');
-            const faqItems = Array.from(faqListGym.querySelectorAll('.faq-item'));
-            const extraItems = faqItems.filter(i => i.classList.contains('extra'));
-            const faqMoreBtn = document.getElementById('faqMoreBtn');
-            const faqMoreText = document.getElementById('faqMoreText');
-            const faqMoreIcon = document.getElementById('faqMoreIcon');
-
-            const faqSearch = document.getElementById('faqSearch');
-            const faqClearSearch = document.getElementById('faqClearSearch');
-
-            // init: show first VISIBLE_INITIAL items (counting all items order)
-            function initVisibility() {
-                faqItems.forEach((el, idx) => {
-                    if (idx < VISIBLE_INITIAL) el.style.display = 'block';
-                    else {
-                        if (!el.classList.contains('extra')) el.style.display = 'block';
-                        else el.style.display = 'none';
-                    }
-                });
-
-                if (extraItems.length === 0) faqMoreBtn.style.display = 'none';
-            }
-
-            // toggle open/close
-            function toggleItem(item) {
-                const isOpen = item.classList.contains('open');
-                const btn = item.querySelector('.faq-q');
-                const answer = item.querySelector('.faq-a');
-
-                if (isOpen) {
-                    item.classList.remove('open');
-                    btn.setAttribute('aria-expanded', 'false');
-                    answer.hidden = true;
-                } else {
-                    item.classList.add('open');
-                    btn.setAttribute('aria-expanded', 'true');
-                    answer.hidden = false;
-                    // close others (optional: comment out if you want multiple open)
-                    // faqItems.forEach(i => { if(i !== item){ i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); i.querySelector('.faq-a').hidden = true; }});
-                }
-            }
-
-            // attach handlers
             faqItems.forEach(item => {
                 const btn = item.querySelector('.faq-q');
                 const answer = item.querySelector('.faq-a');
-                answer.hidden = true;
-                btn.addEventListener('click', () => toggleItem(item));
-                btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(item); } });
-            });
 
-            // reveal next batch
-            function revealNextBatch() {
-                const hiddenExtras = extraItems.filter(el => getComputedStyle(el).display === 'none');
-                if (hiddenExtras.length === 0) {
-                    faqMoreText.innerText = 'All questions shown';
-                    faqMoreBtn.setAttribute('aria-expanded', 'true');
-                    faqMoreIcon.classList.remove('fa-chevron-down');
-                    faqMoreIcon.classList.add('fa-check');
-                    return;
-                }
-                const toReveal = hiddenExtras.slice(0, BATCH);
-                toReveal.forEach(el => {
-                    el.style.display = 'block';
-                    el.classList.add('reveal');
-                    setTimeout(() => el.classList.remove('reveal'), 600);
-                });
-                const remaining = extraItems.filter(el => getComputedStyle(el).display === 'none').length;
-                if (remaining === 0) {
-                    faqMoreText.innerText = 'All questions shown';
-                    faqMoreBtn.setAttribute('aria-expanded', 'true');
-                    faqMoreIcon.classList.remove('fa-chevron-down');
-                    faqMoreIcon.classList.add('fa-check');
-                } else {
-                    faqMoreText.innerText = 'Check more questions';
-                }
-            }
+                // सुरुवातीला उत्तरे लपवा
+                if (answer) answer.hidden = true;
 
-            faqMoreBtn.addEventListener('click', () => {
-                revealNextBatch();
-                setTimeout(() => {
-                    const firstNew = extraItems.find(el => getComputedStyle(el).display !== 'none' && !el.classList.contains('visited'));
-                    if (firstNew) { firstNew.classList.add('visited'); firstNew.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-                }, 180);
-            });
+                btn.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
 
-            // Live search filter
-            function runSearch(q) {
-                const s = (q || '').trim().toLowerCase();
-                if (!s) {
-                    // restore default visibility
-                    initVisibility();
-                    return;
-                }
-                // when searching, show all matches regardless of .extra
-                faqItems.forEach(item => {
-                    const qText = item.querySelector('.faq-q span').innerText.toLowerCase();
-                    const aText = item.querySelector('.faq-a').innerText.toLowerCase();
-                    const match = qText.includes(s) || aText.includes(s);
-                    item.style.display = match ? 'block' : 'none';
-                    // close answers for non-matches
-                    if (!match) { item.classList.remove('open'); item.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); item.querySelector('.faq-a').hidden = true; }
-                });
-                // change more button while searching
-                if (s) {
-                    faqMoreBtn.style.display = 'none';
-                    faqMoreText.innerText = 'Search results';
-                } else {
-                    faqMoreBtn.style.display = '';
-                    faqMoreText.innerText = 'Check more questions';
-                }
-            }
+                    // इतर सर्व उघडे FAQ बंद करा (Optional)
+                    faqItems.forEach(i => {
+                        i.classList.remove('open');
+                        const a = i.querySelector('.faq-a');
+                        if (a) a.hidden = true;
+                        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+                    });
 
-            faqSearch.addEventListener('input', e => runSearch(e.target.value));
-            faqClearSearch.addEventListener('click', () => { faqSearch.value = ''; runSearch(''); faqSearch.focus(); });
-
-            // init AOS if not already initialized (safe to call again)
-            if (typeof AOS !== 'undefined') {
-                AOS.refresh();
-            }
-
-            // initial setup
-            initVisibility();
-        })();
-    </script>
-
-
-    <script>
-        (function () {
-            const VISIBLE_INITIAL = 5;   // first visible
-            const BATCH = 10;            // reveal per click
-
-            const faqListTABLETENNIS = document.getElementById('faqListTABLETENNIS');
-            const faqItems = Array.from(faqListTABLETENNIS.querySelectorAll('.faq-item'));
-            const extraItems = faqItems.filter(i => i.classList.contains('extra'));
-            const faqMoreBtn = document.getElementById('faqMoreBtn');
-            const faqMoreText = document.getElementById('faqMoreText');
-            const faqMoreIcon = document.getElementById('faqMoreIcon');
-
-            const faqSearch = document.getElementById('faqSearch');
-            const faqClearSearch = document.getElementById('faqClearSearch');
-
-            // init: show first VISIBLE_INITIAL items (counting all items order)
-            function initVisibility() {
-                faqItems.forEach((el, idx) => {
-                    if (idx < VISIBLE_INITIAL) el.style.display = 'block';
-                    else {
-                        if (!el.classList.contains('extra')) el.style.display = 'block';
-                        else el.style.display = 'none';
+                    // क्लिक केलेल्या FAQ ला उघडा किंवा बंद करा
+                    if (!isOpen) {
+                        item.classList.add('open');
+                        btn.setAttribute('aria-expanded', 'true');
+                        if (answer) answer.hidden = false;
                     }
                 });
-
-                if (extraItems.length === 0) faqMoreBtn.style.display = 'none';
-            }
-
-            // toggle open/close
-            function toggleItem(item) {
-                const isOpen = item.classList.contains('open');
-                const btn = item.querySelector('.faq-q');
-                const answer = item.querySelector('.faq-a');
-
-                if (isOpen) {
-                    item.classList.remove('open');
-                    btn.setAttribute('aria-expanded', 'false');
-                    answer.hidden = true;
-                } else {
-                    item.classList.add('open');
-                    btn.setAttribute('aria-expanded', 'true');
-                    answer.hidden = false;
-                    // close others (optional: comment out if you want multiple open)
-                    // faqItems.forEach(i => { if(i !== item){ i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); i.querySelector('.faq-a').hidden = true; }});
-                }
-            }
-
-            // attach handlers
-            faqItems.forEach(item => {
-                const btn = item.querySelector('.faq-q');
-                const answer = item.querySelector('.faq-a');
-                answer.hidden = true;
-                btn.addEventListener('click', () => toggleItem(item));
-                btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(item); } });
             });
-
-            // reveal next batch
-            function revealNextBatch() {
-                const hiddenExtras = extraItems.filter(el => getComputedStyle(el).display === 'none');
-                if (hiddenExtras.length === 0) {
-                    faqMoreText.innerText = 'All questions shown';
-                    faqMoreBtn.setAttribute('aria-expanded', 'true');
-                    faqMoreIcon.classList.remove('fa-chevron-down');
-                    faqMoreIcon.classList.add('fa-check');
-                    return;
-                }
-                const toReveal = hiddenExtras.slice(0, BATCH);
-                toReveal.forEach(el => {
-                    el.style.display = 'block';
-                    el.classList.add('reveal');
-                    setTimeout(() => el.classList.remove('reveal'), 600);
-                });
-                const remaining = extraItems.filter(el => getComputedStyle(el).display === 'none').length;
-                if (remaining === 0) {
-                    faqMoreText.innerText = 'All questions shown';
-                    faqMoreBtn.setAttribute('aria-expanded', 'true');
-                    faqMoreIcon.classList.remove('fa-chevron-down');
-                    faqMoreIcon.classList.add('fa-check');
-                } else {
-                    faqMoreText.innerText = 'Check more questions';
-                }
-            }
-
-            faqMoreBtn.addEventListener('click', () => {
-                revealNextBatch();
-                setTimeout(() => {
-                    const firstNew = extraItems.find(el => getComputedStyle(el).display !== 'none' && !el.classList.contains('visited'));
-                    if (firstNew) { firstNew.classList.add('visited'); firstNew.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-                }, 180);
-            });
-
-            // Live search filter
-            function runSearch(q) {
-                const s = (q || '').trim().toLowerCase();
-                if (!s) {
-                    // restore default visibility
-                    initVisibility();
-                    return;
-                }
-                // when searching, show all matches regardless of .extra
-                faqItems.forEach(item => {
-                    const qText = item.querySelector('.faq-q span').innerText.toLowerCase();
-                    const aText = item.querySelector('.faq-a').innerText.toLowerCase();
-                    const match = qText.includes(s) || aText.includes(s);
-                    item.style.display = match ? 'block' : 'none';
-                    // close answers for non-matches
-                    if (!match) { item.classList.remove('open'); item.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); item.querySelector('.faq-a').hidden = true; }
-                });
-                // change more button while searching
-                if (s) {
-                    faqMoreBtn.style.display = 'none';
-                    faqMoreText.innerText = 'Search results';
-                } else {
-                    faqMoreBtn.style.display = '';
-                    faqMoreText.innerText = 'Check more questions';
-                }
-            }
-
-            faqSearch.addEventListener('input', e => runSearch(e.target.value));
-            faqClearSearch.addEventListener('click', () => { faqSearch.value = ''; runSearch(''); faqSearch.focus(); });
-
-            // init AOS if not already initialized (safe to call again)
-            if (typeof AOS !== 'undefined') {
-                AOS.refresh();
-            }
-
-            // initial setup
-            initVisibility();
         })();
     </script>
     <!-- FAQ script e -->
-
     <script>
-        (function () {
-            // Read id from query string
-            function getId() {
-                try {
-                    return new URLSearchParams(window.location.search).get('id');
-                } catch (e) { return null; }
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. URL madhun 'id' parameter kadha (e.g., ?id=gymnastics)
+            const urlParams = new URLSearchParams(window.location.search);
+            const programId = urlParams.get('id');
+
+            // 2. Sarv program blocks nivda
+            const allBlocks = document.querySelectorAll('.program-block');
+
+            if (programId) {
+                // 3. Jar URL madhe ID asel, tar fakt matching block dakhva
+                let found = false;
+                allBlocks.forEach(block => {
+                    if (block.dataset.program === programId) {
+                        block.style.display = 'block';
+                        found = true;
+                    } else {
+                        block.style.display = 'none';
+                    }
+                });
+
+                // Jar ID match nahi jhala tar pahila block dakhva (fallback)
+                if (!found && allBlocks.length > 0) {
+                    allBlocks[0].style.display = 'block';
+                }
+            } else {
+                // Jar URL madhe ID nasel, tar default pahila block dakhva
+                if (allBlocks.length > 0) {
+                    allBlocks[0].style.display = 'block';
+                }
             }
-
-            const id = getId();
-            const blocks = Array.from(document.querySelectorAll('.program-block'));
-            if (!blocks.length) return; // nothing to do
-
-            // Hide all blocks first
-            blocks.forEach(b => b.style.display = 'none');
-
-            // try to find matching block
-            let target = null;
-            if (id) {
-                target = blocks.find(b => b.dataset.program === id);
-            }
-
-            // fallback: show first block if no match
-            if (!target) {
-                target = blocks[0];
-            }
-
-            // show & scroll into view
-            target.style.display = '';
-            // optional: smooth scroll so user sees it
-            setTimeout(() => { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
-        })();
+        });
     </script>
 
 </body>
