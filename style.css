@@ -3950,3 +3950,21 @@ footer {
   text-decoration: underline;
   color: grey;
 }
+
+/* pdf view */
+.pdf-viewer-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pdf-container {
+  background: #1a1b1d;
+  padding: 10px;
+  border: 1px solid #ff671e;
+
+}
+
+@media (max-width: 768px) {
+  .pdf-container iframe {
+    height: 400px;
+  }
+}
